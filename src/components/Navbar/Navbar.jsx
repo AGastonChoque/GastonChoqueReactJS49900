@@ -1,4 +1,5 @@
 import classes from "./Navbar.module.css"
+import CartWidget from "../CartWidget/CartWidget"
 
 const Navbar = () => {
     return (
@@ -17,10 +18,13 @@ const Navbar = () => {
                             <a className="nav-link active text-light">Carrito</a>
                         </li>
                     </ul>
-                    <form className="d-flex">
+                    <div className="d-flex flex-column">
+                        <form className="d-flex">
                         <input className="form-control me-2" type="search" placeholder="Buscar"/>
                         <button className="btn btn-outline-light" type="submit">Buscar</button>
                     </form>
+                    </div>
+                    <CartWidget />
                 </div>
             </div>
         </nav>
