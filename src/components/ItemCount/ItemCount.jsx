@@ -6,12 +6,12 @@ const ItemCount = ({initialValue, incrementBy}) => {
 
     const restar = () => {
         if (count > 0) {
-            setCount(count - incrementBy)
+            setCount(prev => prev - incrementBy)
         }
     }
 
     const sumar = () => {
-        setCount(count + incrementBy)
+        setCount(prev => prev + incrementBy)
     }
 
 return(
