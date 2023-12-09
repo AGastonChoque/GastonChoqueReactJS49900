@@ -1,0 +1,17 @@
+import { useState } from 'react'
+import Navbar from './components/Navbar/Navbar'
+import ItemListContainer from './components/ItemListContainer/ItemListContainer'
+import ItemCount from './components/ItemCount/ItemCount'
+
+function App() {
+  return (
+    <>
+    <header className="bg-dark bg-gradient p-2">
+      <Navbar />
+    </header>
+    <ItemListContainer text1={"Bienvenido a mi E-Commerce"} />
+    </>
+  )
+}
+
+export default App
