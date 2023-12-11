@@ -1,7 +1,6 @@
-import { useState } from 'react'
 import Navbar from './components/Navbar/Navbar'
 import ItemListContainer from './components/ItemListContainer/ItemListContainer'
-import ItemCount from './components/ItemCount/ItemCount'
+import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer'
 
 function App() {
   return (
@@ -10,6 +9,7 @@ function App() {
       <Navbar />
     </header>
     <ItemListContainer text1={"Bienvenido a mi E-Commerce"} />
+    <ItemDetailContainer />
     </>
   )
 }

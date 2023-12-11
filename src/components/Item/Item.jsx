@@ -1,10 +1,10 @@
 import classes from "./Item.module.css"
 
-const Item = ({ name, img, price }) => {
+const Item = ({ name, pictureUrl, price }) => {
     return (
 
-        <div className={classes.cardMan1}>
-            <img src={img} className="card-img-top" alt={name}/>
+        <div className={classes.cardItemMan1}>
+            <img src={pictureUrl} className="card-img-top" alt={name}/>
             <div>
                 <h3 className="card-title">{name}</h3>
                 <p className="card-text">${price.toFixed(2)}</p>
