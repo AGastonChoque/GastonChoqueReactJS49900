@@ -6,14 +6,15 @@ const ItemDetail = ({ id, name, price, category, pictureUrl, stock, description 
 
         <div className={classes.cardItemDetailMan1}>
             <div>
-                <img src={pictureUrl} className="img-fluid rounded" alt={name} />
+                <img src={pictureUrl} className={classes.imgType} alt={name} />
             </div>
             <div>
                 <h5 className="card-title">{name}</h5>
                 <p className="card-text"><small>{category}</small></p>
                 <p className="card-text">{description}</p>
                 <p className="card-text">${price}</p>
-                <ItemCount initialValue={0} incrementBy={1} /></div>
+                <ItemCount initialValue={1} incrementBy={1} stock={stock} />
+            </div>
         </div>
     )
 }

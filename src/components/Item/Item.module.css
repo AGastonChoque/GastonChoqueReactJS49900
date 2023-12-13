@@ -12,3 +12,9 @@
     border-style: solid;
     border-radius: 10px;
 }
+
+.styleImg{
+    max-height: 60%;
+    width: auto;
+    border-radius: 15px;
+}

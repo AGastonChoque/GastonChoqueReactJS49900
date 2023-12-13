@@ -2,7 +2,7 @@ import Item from "../Item/Item"
 
 const ItemList = ({ products }) => {
     return (
-        <div className="d-flex justify-content-between">
+        <div className="d-flex justify-content-between flex-wrap">
             {
                 products.map(product => {
                     return (

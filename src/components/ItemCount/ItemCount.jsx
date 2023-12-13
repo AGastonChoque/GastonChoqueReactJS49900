@@ -1,16 +1,20 @@
 import { useState } from "react"
 
-const ItemCount = ({initialValue, incrementBy}) => {
+const ItemCount = ({initialValue, incrementBy, stock, onAdd}) => {
+
     const [count, setCount] = useState(initialValue)
 
     const restar = () => {
-        if (count > 0) {
+        if (count > 1) {
             setCount(prev => prev - incrementBy)
         }
     }
 
     const sumar = () => {
-        setCount(prev => prev + incrementBy)
+        if(count < stock) {
+            setCount(prev => prev + incrementBy)
+        }
+        
     }
 
 return(
@@ -20,7 +24,7 @@ return(
         </div>
         <div>
             <button className="btn btn-danger m-1" onClick={restar}>-</button>
-            <button className="btn btn-warning m-1" onClick={() => setCount(initialValue)}>Sumar al carrito</button>
+            <button className="btn btn-warning m-1" onClick={() => onAdd(count)}>Sumar al carrito</button>
             <button className="btn btn-success m-1" onClick={sumar}>+</button>
         </div>
     </div>
