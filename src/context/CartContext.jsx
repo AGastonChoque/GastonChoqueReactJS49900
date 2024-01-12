@@ -1,10 +1,9 @@
 import { useState, createContext, useContext } from 'react'
 
-
 export const CartContext = createContext({
     cart: [],
-    addItem: () => {},
-    isInCart: () => {},
+    addItem: () => { },
+    isInCart: () => { },
 })
 
 
@@ -16,7 +15,10 @@ export const CartProvider = ({ children }) => {
         if (!isInCart(productToAdd.id)) {
             setCart(prev => [...prev, productToAdd])
         } else {
-            console.error("El producto ya esta en tu carrito")
+            removeItem(productToAdd.id)
+            /* let prodExistente = existeEnElCarrito(productToAdd.id)
+            prodExistente.quantity = productToAdd.quantity */
+            setCart(prev => [...prev, productToAdd])
         }
     }
 
@@ -24,8 +26,11 @@ export const CartProvider = ({ children }) => {
         return cart.some(prod => prod.id === productId)
     }
 
-    const getItem = (productId) => {
-        return
+    const existeEnElCarrito = (productId) => {
+        const prodExistente = cart.find(prod => prod.id === productId)
+        if(prodExistente){
+            return prodExistente
+        }
     }
 
     const removeItem = (productId) => {
@@ -59,7 +64,7 @@ export const CartProvider = ({ children }) => {
 
 
     return (
-        <CartContext.Provider value={{ cart, isInCart, addItem, getItem, removeItem, totalQuantity, total }}>
+        <CartContext.Provider value={{ cart, isInCart, addItem, existeEnElCarrito, removeItem, totalQuantity, total }}>
             {children}
         </CartContext.Provider>
     )
