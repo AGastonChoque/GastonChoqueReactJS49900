@@ -16,8 +16,6 @@ export const CartProvider = ({ children }) => {
             setCart(prev => [...prev, productToAdd])
         } else {
             removeItem(productToAdd.id)
-            /* let prodExistente = existeEnElCarrito(productToAdd.id)
-            prodExistente.quantity = productToAdd.quantity */
             setCart(prev => [...prev, productToAdd])
         }
     }
@@ -26,7 +24,7 @@ export const CartProvider = ({ children }) => {
         return cart.some(prod => prod.id === productId)
     }
 
-    const existeEnElCarrito = (productId) => {
+    const inCart = (productId) => {
         const prodExistente = cart.find(prod => prod.id === productId)
         if(prodExistente){
             return prodExistente
@@ -64,7 +62,7 @@ export const CartProvider = ({ children }) => {
 
 
     return (
-        <CartContext.Provider value={{ cart, isInCart, addItem, existeEnElCarrito, removeItem, totalQuantity, total }}>
+        <CartContext.Provider value={{ cart, isInCart, addItem, inCart, removeItem, totalQuantity, total }}>
             {children}
         </CartContext.Provider>
     )

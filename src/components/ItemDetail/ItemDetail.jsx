@@ -3,33 +3,24 @@ import ItemCount from "../ItemCount/ItemCount"
 import { useState } from "react"
 import { Link } from "react-router-dom"
 import { useCart } from "../../context/CartContext"
-import { ToastContainer, toast } from 'react-toastify';
+import { useNotification } from "../../NotificationProvider/NotificationContext"
 
 
 
 const ItemDetail = ({ id, name, price, category, pictureUrl, stock, description }) => {
 
-    const { addItem, isInCart, cart, existeEnElCarrito} = useCart()
+    const { addItem, isInCart, cart, inCart } = useCart()
 
-    const enElCarrito = existeEnElCarrito(id)
+    const { showNotification } = useNotification ()
+
+    const enElCarrito = inCart(id)
 
     const handleOnAdd = (quantity) => {
         const objProductToAdd = {
             id, name, price, category, pictureUrl, quantity
         }
         addItem(objProductToAdd)
-
-        toast.success(`Agregaste ${quantity} "${name}" al carrito!`, {
-            position: "bottom-right",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "colored",
-        });
-
+        showNotification(`Agregaste ${quantity} "${name}" al carrito!`)
     }
 
 
@@ -55,7 +46,6 @@ const ItemDetail = ({ id, name, price, category, pictureUrl, stock, description 
                         <ItemCount initialValue={1} incrementBy={1} stock={stock} onAdd={handleOnAdd}/>
                     )
                 }
-                <ToastContainer />
             </div>
         </div>
     )

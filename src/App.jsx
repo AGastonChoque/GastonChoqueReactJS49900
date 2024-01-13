@@ -4,13 +4,14 @@ import ItemListContainer from './components/ItemListContainer/ItemListContainer'
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { CartProvider } from './context/CartContext'
-/* import { NotificationProvider } from './NotificationsService/ToastyNotifications' */
+import { NotificationProvider } from './NotificationProvider/NotificationContext'
+
 
 function App() {
 
   return (
     <>
-      {/* <NotificationProvider> */}
+      <NotificationProvider>
         <BrowserRouter>
           <CartProvider>
             <header className='bg-dark bg-gradient'>
@@ -25,7 +26,7 @@ function App() {
             </Routes>
           </CartProvider>
         </BrowserRouter>
-      {/* </NotificationProvider> */}
+      </NotificationProvider>
     </>
   )
 }
