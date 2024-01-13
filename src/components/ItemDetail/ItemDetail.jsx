@@ -1,6 +1,5 @@
 import classes from "./ItemDetail.module.css"
 import ItemCount from "../ItemCount/ItemCount"
-import { useState } from "react"
 import { Link } from "react-router-dom"
 import { useCart } from "../../context/CartContext"
 import { useNotification } from "../../NotificationProvider/NotificationContext"
@@ -11,7 +10,7 @@ const ItemDetail = ({ id, name, price, category, pictureUrl, stock, description 
 
     const { addItem, isInCart, cart, inCart } = useCart()
 
-    const { showNotification } = useNotification ()
+    const { showNotification } = useNotification()
 
     const enElCarrito = inCart(id)
 
@@ -38,12 +37,12 @@ const ItemDetail = ({ id, name, price, category, pictureUrl, stock, description 
                 {
                     isInCart(id) ? (
                         <div className="d-flex flex-column">
-                            <ItemCount initialValue={enElCarrito.quantity} incrementBy={1} stock={stock} onAdd={handleOnAdd}/>
-                            
+                            <ItemCount initialValue={enElCarrito.quantity} incrementBy={1} stock={stock} onAdd={handleOnAdd} />
+
                             <Link to="/cart" className="btn btn-success m-1">Terminar Compra</Link>
                         </div>
                     ) : (
-                        <ItemCount initialValue={1} incrementBy={1} stock={stock} onAdd={handleOnAdd}/>
+                        <ItemCount initialValue={1} incrementBy={1} stock={stock} onAdd={handleOnAdd} />
                     )
                 }
             </div>
