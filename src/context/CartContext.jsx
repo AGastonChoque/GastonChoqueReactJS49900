@@ -15,8 +15,7 @@ export const CartProvider = ({ children }) => {
         if (!isInCart(productToAdd.id)) {
             setCart(prev => [...prev, productToAdd])
         } else {
-            removeItem(productToAdd.id)
-            setCart(prev => [...prev, productToAdd])
+            updateCart(productToAdd)
         }
     }
 
@@ -24,12 +23,38 @@ export const CartProvider = ({ children }) => {
         return cart.some(prod => prod.id === productId)
     }
 
-    const inCart = (productId) => {
+    const prodInCart = (productId) => {
         const prodExistente = cart.find(prod => prod.id === productId)
-        if(prodExistente){
+        if (prodExistente) {
             return prodExistente
         }
     }
+
+    const updateCart = (productId) => {
+        const posId = cart.findIndex(prod => prod.id === productId.id)
+        const newCart = [...cart]
+        newCart[posId] = { ...newCart[posId], quantity: productId.quantity }
+        setCart(newCart)
+    }
+
+    const updateFromCart = (productId, quantityValue, func) => {
+
+        const func2 = () => {
+            const posId = cart.findIndex(prod => prod.id === productId)
+            let refQuant = document.getElementById(`{onRef${productId}}`).textContent
+
+            if (quantityValue >= 1) {
+                const newCart = [...cart]
+                newCart[posId] = { ...newCart[posId], quantity: parseInt(refQuant) }
+                setCart(newCart)
+            }
+        }
+
+        const restaSuma = async () => { await func(); func2() }
+        restaSuma()
+
+    }
+
 
     const removeItem = (productId) => {
         const cartUpdate = cart.filter(prod => prod.id !== productId)
@@ -58,11 +83,11 @@ export const CartProvider = ({ children }) => {
         return accu
     }
 
-    const total = getTotalQuantity()
+    const total = getTotal()
 
 
     return (
-        <CartContext.Provider value={{ cart, isInCart, addItem, inCart, removeItem, totalQuantity, total }}>
+        <CartContext.Provider value={{ cart, addItem, isInCart, prodInCart, updateCart, updateFromCart, removeItem, totalQuantity, total }}>
             {children}
         </CartContext.Provider>
     )
