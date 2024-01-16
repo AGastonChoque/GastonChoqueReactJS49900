@@ -3,6 +3,7 @@ import Navbar from './components/Navbar/Navbar'
 import ItemListContainer from './components/ItemListContainer/ItemListContainer'
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer'
 import CartView from './components/CartView/CartView'
+import CheckoutView from './components/CheckoutView/CheckoutView'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { CartProvider } from './context/CartContext'
 import { NotificationProvider } from './NotificationProvider/NotificationContext'
@@ -24,7 +25,8 @@ function App() {
               <Route path="/category/:categoryId" element={<ItemListContainer text1={"Productos filtrados"} />} />
               <Route path="/detail/:productId" element={<ItemDetailContainer />} />
               <Route path="/cart" element={<CartView />} />
-              <Route path="*" element={<h3 className='container d-flex justify-content-center'>Pagina no encontrada</h3>} />
+              <Route path="/checkout" element={<CheckoutView />} />
+              <Route path="*" element={<h2 className='container d-flex justify-content-center mt-5'>Pagina no encontrada</h2>} />
             </Routes>
           </CartProvider>
         </BrowserRouter>

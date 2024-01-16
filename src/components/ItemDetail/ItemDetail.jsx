@@ -21,7 +21,6 @@ const ItemDetail = ({ id, name, price, category, pictureUrl, stock, description 
         addItem(objProductToAdd)
         showNotification(`Agregaste ${quantity} "${name}" al carrito!`)
     }
-    console.log(cart);
 
     return (
 
