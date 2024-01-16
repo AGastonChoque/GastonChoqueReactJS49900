@@ -1,6 +1,6 @@
 import logoSilvinaTejerina from "./assets/transparente.png"
 import CartWidget from "../CartWidget/CartWidget"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 const Header = () => {
 
@@ -13,9 +13,7 @@ const Header = () => {
                     width="250"/>
             
             <div>
-                <a href="#" className="m-2">
-                    Iniciar sesión
-                </a>
+                <Link to="/admin" className="m-2">Admin</Link>
                 <CartWidget />
             </div>
         </div>

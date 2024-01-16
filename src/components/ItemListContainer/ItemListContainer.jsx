@@ -14,7 +14,6 @@ const ItemListContainer = ({ text1 }) => {
     const { categoryId } = useParams()
     const { showNotification } = useNotification()
 
-
     useEffect(() => {
 
         const collectionRef = categoryId

@@ -18,15 +18,18 @@ const ItemCount = ({ initialValue, incrementBy, stock, onAdd, countCart, prodId 
         }
     }
 
-
-    return (
-        countCart ? (
+    if (countCart) {
+        return (
             <div className="d-flex align-items-center" >
                 <button className="btn btn-danger m-2" onClick={() => onAdd(prodId, quantity, restar)} >-</button>
                 <p id={`{onRef${prodId}}`} > {quantity} </p>
                 <button className="btn btn-success mx-2 " onClick={() => onAdd(prodId, quantity, sumar)} >+</button>
             </div>
-        ) : (
+        )
+    }
+
+    return (
+            stock > 1 ? (
             <div className="d-flex flex-column align-items-center" >
                 <div>
                     <h3>{quantity}</h3>
@@ -37,8 +40,16 @@ const ItemCount = ({ initialValue, incrementBy, stock, onAdd, countCart, prodId 
                     <button className="btn btn-success m-1" onClick={sumar}>+</button>
                 </div>
             </div >
+        ) : (
+            <div className="d-flex flex-column align-items-center" >
+                <div>
+                    <h3>0</h3>
+                </div>
+                <div>
+                    <p className="btn btn-danger m-1">Sin stock</p>
+                </div>
+            </div >
         )
-
     )
 }
 
