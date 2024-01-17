@@ -26,11 +26,11 @@ const updateFromMock = async () => {
 
 }
 
-const AdminContainer = () => {
+const AdminContainer = ({ text1 }) => {
 
     return (
         <div className="container">
-            <h4 className="text-center mt-5">Admin</h4>
+            <h4 className="text-center mt-5">{ text1 }</h4>
             <UpdateStock updStock={updateFromMock} />
         </div>
     )

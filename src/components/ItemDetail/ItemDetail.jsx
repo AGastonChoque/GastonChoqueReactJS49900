@@ -8,7 +8,7 @@ import { useNotification } from "../../NotificationProvider/NotificationContext"
 
 const ItemDetail = ({ id, name, price, category, pictureUrl, stock, description }) => {
 
-    const { addItem, isInCart, cart, prodInCart } = useCart()
+    const { addItem, isInCart, prodInCart } = useCart()
 
     const { showNotification } = useNotification()
 

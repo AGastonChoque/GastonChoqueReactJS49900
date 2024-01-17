@@ -3,7 +3,7 @@ import ItemCount from "../ItemCount/ItemCount"
 import { Link } from "react-router-dom"
 
 
-const CartView = () => {
+const CartView = ({ text1 }) => {
 
 
     const { cart, updateFromCart, removeItem, total, vaciarCarrito } = useCart()
@@ -12,10 +12,10 @@ const CartView = () => {
     return (
         cart.length >= 1 ? (
             <div className="container">
-                <h2 className="container d-flex justify-content-around mt-5">Carrito</h2>
+                <h4 className="container d-flex justify-content-around mt-5">{text1}</h4>
                 <div className="container mt-5 mb-2">
                     <div className="row justify-content-between">
-                        <h2>Sus productos</h2>
+                        <h4>Sus productos</h4>
                         <table className="table">
                             <thead>
                                 <tr>
@@ -64,7 +64,7 @@ const CartView = () => {
             </div>
         ) : (
             <div className="container d-flex flex-column align-items-center mt-5">
-                <h2 >Carrito</h2>
+                <h4>{text1}</h4>
                 <h3 >Usted no tiene ningun producto en su carrito</h3>
             </div>
         )

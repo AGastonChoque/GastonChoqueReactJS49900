@@ -24,10 +24,10 @@ function App() {
             <Routes>
               <Route path="/" element={<ItemListContainer text1={"Bienvenido a mi E-Commerce"} />} />
               <Route path="/category/:categoryId" element={<ItemListContainer text1={"Productos filtrados"} />} />
-              <Route path="/detail/:productId" element={<ItemDetailContainer />} />
-              <Route path="/cart" element={<CartView />} />
-              <Route path="/checkout" element={<CheckoutView />} />
-              <Route path="/admin" element={<AdminContainer />} />
+              <Route path="/detail/:productId" element={<ItemDetailContainer text1={"Detalle de producto"} />} />
+              <Route path="/cart" element={<CartView text1={"Carrito"} />} />
+              <Route path="/checkout" element={<CheckoutView text1={"Checkout"} />} />
+              <Route path="/admin" element={<AdminContainer text1={"Admin"}/>} />
               <Route path="*" element={<h2 className='container d-flex justify-content-center mt-5'>Pagina no encontrada</h2>} />
             </Routes>
           </CartProvider>

@@ -6,7 +6,7 @@ import { useState } from "react"
 import Loading from "../Loading/Loading"
 import { useNotification } from "../../NotificationProvider/NotificationContext"
 
-const CheckoutView = () => {
+const CheckoutView = ({ text1 }) => {
     const { cart, total, vaciarCarrito } = useCart()
     const [orderId, setOrderId] = useState(null)
     const [loading, setLoading] = useState()
@@ -92,13 +92,12 @@ const CheckoutView = () => {
     }
 
 
-
     return (
         <div className="container">
-            <h2 className="container d-flex justify-content-around mt-5">Checkout</h2>
+            <h4 className="container d-flex justify-content-around mt-5">{ text1 }</h4>
             <div className="container mt-5 mb-2">
                 <div className="row justify-content-between">
-                    <h2>Tus datos</h2>
+                    <h4>Tus datos</h4>
                 </div>
                 <div>
                     <ContactForm createOrder={createOrder} />

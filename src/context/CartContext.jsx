@@ -66,7 +66,6 @@ export const CartProvider = ({ children }) => {
     const removeItem = (productId, productName) => {
         const cartUpdate = cart.filter(prod => prod.id !== productId)
         setCart(cartUpdate)
-        console.log(productName);
         showNotification(`Eliminaste "${productName}" del carrito!`)
     }
 

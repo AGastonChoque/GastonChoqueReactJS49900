@@ -3,41 +3,20 @@ import { useParams } from "react-router-dom"
 import ItemList from "../ItemList/ItemList"
 import Loading from "../Loading/Loading"
 import { useNotification } from "../../NotificationProvider/NotificationContext"
-import { getDocs, collection, query, where } from "firebase/firestore"
-import { db } from "../../services/firebase/firebaseConfig"
+import { getProducts } from "../../services/firebase/firestore/products"
+import { useAsync } from "../../hooks/useAsync"
 
 
 const ItemListContainer = ({ text1 }) => {
 
-    const [products, setProducts] = useState([])
-    const [loading, setLoading] = useState(true)
     const { categoryId } = useParams()
     const { showNotification } = useNotification()
 
-    useEffect(() => {
+    const { data: products, loading, error } = useAsync(() => getProducts(categoryId), [categoryId])
 
-        const collectionRef = categoryId
-            ? query(collection(db, "products"), where("category", "==", categoryId))
-            : collection(db, "products")
-
-        getDocs(collectionRef)
-            .then(querySnapshot => {
-
-                const productsAdapted = querySnapshot.docs.map(doc => {
-                    const fields = doc.data()
-                    return { id: doc.id, ...fields }
-                })
-
-                setProducts(productsAdapted)
-            })
-            .catch(() => {
-                showNotification("Hubo un error al cargar los productos, intente nuevamente")
-            })
-            .finally(() => {
-                setLoading(false)
-            })
-
-    }, [categoryId])
+    if(error) {
+        showNotification(error)
+    }
 
 
     return (
