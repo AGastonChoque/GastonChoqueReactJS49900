@@ -102,11 +102,17 @@ slug (string)
 npm run dev
 ```
 
+
+
 ## Test App
 
 [Vercel deploy]
 
-![Gif](gif/2023-12-13-12-53-17.gif)
+
+
+## Gif
+
+![Gif](gif/2024-01-17-23-56-36.gif)
 
 [Vercel deploy]: <https://gaston-choque-react-js-49900.vercel.app>
 
